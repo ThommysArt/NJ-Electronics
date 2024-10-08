@@ -1,0 +1,14 @@
+{
+    "name": "NJ Electronics - Tech E-shop",
+    "short_name": "NJ Electronice",
+    "description": "A Progressive Web App built with Next.js",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "500x500",
+            "type": "image/png"
+        }
+    ]
+}

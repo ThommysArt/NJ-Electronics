@@ -48,7 +48,7 @@ export default function Hero() {
         transition={{ delay: 0.5, duration: 0.5 }}
         className="mt-12"
       >
-        <BrowserComponent className="rounded-lg shadow-lg mx-auto h-[250px] w-[350px] md:h-[400px] md:w-[800px] bg-background overflow-hidden">
+        <BrowserComponent className="rounded-lg shadow-lg mx-auto h-[250px] w-[360px] md:h-[400px] md:w-[800px] bg-background overflow-hidden">
           <div className="h-full w-full">
             <AspectRatio ratio={16/9} className="h-full">
               <Image
@@ -56,7 +56,7 @@ export default function Hero() {
                 alt="Latest Tech Gadgets"
                 fill
                 className='object-cover'
-                sizes="(max-width: 768px) 350px, 800px"
+                sizes="(max-width: 768px) 360px, 800px"
               />
             </AspectRatio>
           </div>

@@ -4,10 +4,9 @@ import { Navbar } from "./_components/navbar";
 
 export const metadata: Metadata = {
   title: "NJ Electronics | Admin",
-  description: "Need some tech? We got you!",
 };
 
-export default function RootLayout({
+export default function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
