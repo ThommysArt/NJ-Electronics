@@ -1,4 +1,5 @@
 "use client"
+
 import { Button } from '@/components/ui/button'
 import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
@@ -16,6 +17,7 @@ export const Navbar = () => {
     { name: "Products", link: "/admin/products", icon: CodeSandboxLogoIcon },
     { name: "Orders", link: "/admin/orders", icon: ArchiveIcon },
     { name: "Customers", link: "/admin/customers", icon: PersonIcon },
+    { name: "Messages", link: "/admin/messages", icon: PersonIcon },
     { name: "Analytics", link: "/admin/analytics", icon: MixerVerticalIcon },
   ]
   return (
@@ -28,6 +30,7 @@ export const Navbar = () => {
       )}>
         {routes.map((route)=> (
           <Button
+            key={route.name}
             variant={pathname.includes(route.link)?"default":"ghost"}
             onClick={()=>router.push(route.link)}
             size="icon"

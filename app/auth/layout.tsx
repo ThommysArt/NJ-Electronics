@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Prindle | Authentication",
+  title: "NJ Electronics | Authentication",
 };
 
 export default function AuthLayout({

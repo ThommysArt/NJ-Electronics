@@ -31,7 +31,7 @@ export default function RootLayout({
     <SessionProvider>
     <html lang="en" suppressHydrationWarning>
       <head>
-        
+        <link rel="icon" href="/logo.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-black dark:text-white`}
