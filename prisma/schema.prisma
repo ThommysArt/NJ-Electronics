@@ -102,6 +102,7 @@ model Product {
   reduction Float? @default(0)
   units Int @default(1)
   images String[]
+  isAvailable Boolean @default(true)
 
   categoryId String
   category Category @relation(references: [categoryId], fields: [categoryId])

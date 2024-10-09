@@ -47,6 +47,7 @@ export const generateProductsData = (count: number): Product[] => {
       images: [ faker.image.url(), faker.image.url(), faker.image.url() ],
       units: faker.number.int({min: 0, max: 100}),
       categoryId: faker.string.uuid(),
+      isAvailable: true
     });
   }
   return data;
