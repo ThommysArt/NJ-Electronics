@@ -25,6 +25,8 @@ model User {
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
+
+  orders Order[]
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -86,26 +88,31 @@ model Authenticator {
 }
 
 model Category {
-  categoryId Int @id @default(autoincrement())
+  categoryId String @id @default(uuid())
   name String 
+
+  products Product[]
 }
 
 model Product {
-  productId Int @id @default(autoincrement())
+  productId String @id @default(uuid())
   name String
   description String
   price Float @default(5000)
-  reduction Float @default(0)
+  reduction Float? @default(0)
   units Int @default(1)
   images String[]
+
+  categoryId String
+  category Category @relation(references: [categoryId], fields: [categoryId])
 
   cartItems CartItem[]
 }
 
 model Cart {
-  cartId Int @id @default(autoincrement())
-  date DateTime @default(now())
-  updatedAt DateTime @default(now())
+  cartId String @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   isOrdered Boolean @default(false)
 
   userId String
@@ -115,29 +122,32 @@ model Cart {
 }
 
 model CartItem {
-  cartItemId Int @id @default(autoincrement())
-  productId Int
+  cartItemId String @id @default(uuid())
+  productId String
   product Product @relation(references: [productId], fields: [productId])
   units Int @default(1)
   price Float
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  cartId Int
+  cartId String
   cart Cart @relation(references: [cartId], fields: [cartId])
 }
 
 model Order {
-  orderId Int @id @default(autoincrement())
-  date DateTime @default(now())
+  orderId String @id @default(uuid())
   amount Float @default(1000)
   isPaid Boolean @default(false)
   isDelivered Boolean @default(false)
+  deliveryLocation String?
   paymentMethod String @default("Cash On Delivery")
   paymentName String
-  updatedAt DateTime @default(now())
+  paymentPhone String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  userId Int
+  userId String
+  user User @relation(references: [id], fields: [userId])
 
-  cartId Int
+  cartId String
   cart Cart @relation(references: [cartId], fields: [cartId])
 }
