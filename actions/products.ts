@@ -1,6 +1,18 @@
 "use server"
 
 import { prisma } from "@/prisma/connection";
+import { ProductSchema } from "@/constants/zod";
+import * as z from "zod";
+
+export async function getAllProducts() {
+  try {
+    const products = await prisma.product.findMany();
+    return products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+}
 
 export async function updateProductAvailability(productId: string, isAvailable: boolean) {
   try {
@@ -17,5 +29,18 @@ export async function updateProductAvailability(productId: string, isAvailable: 
   } catch (error) {
     console.error("Error updating product availability:", error);
     return { success: false, error: "Failed to update product availability" };
+  }
+}
+
+export async function createProduct(values: z.infer<typeof ProductSchema>) {
+  try {
+    const newProduct = await prisma.product.create({
+      data: values,
+    });
+
+    return { success: true, product: newProduct };
+  } catch (error) {
+    console.error("Error creating product:", error);
+    return { success: false, error: "Failed to create product" };
   }
 }

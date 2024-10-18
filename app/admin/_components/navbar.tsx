@@ -12,7 +12,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { cn } from '@/lib/utils'
-import { ArchiveIcon, CodeSandboxLogoIcon, EnvelopeClosedIcon, HomeIcon, MixerVerticalIcon, PersonIcon } from '@radix-ui/react-icons'
+import { ArchiveIcon, CodeSandboxLogoIcon, EnvelopeClosedIcon, HomeIcon, LayersIcon, MixerVerticalIcon, PersonIcon } from '@radix-ui/react-icons'
 
 export const Navbar = () => {
   const isLarge = useMediaQuery('(min-width: 768px)')
@@ -22,6 +22,7 @@ export const Navbar = () => {
   const routes = [
     { name: "Dashboard", link: "/admin/dashboard", icon: HomeIcon },
     { name: "Products", link: "/admin/products", icon: CodeSandboxLogoIcon },
+    { name: "Categories", link: "/admin/categories", icon: LayersIcon },
     { name: "Orders", link: "/admin/orders", icon: ArchiveIcon },
     { name: "Customers", link: "/admin/customers", icon: PersonIcon },
     { name: "Messages", link: "/admin/messages", icon: EnvelopeClosedIcon },

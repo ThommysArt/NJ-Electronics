@@ -43,6 +43,16 @@ export const ProductColumnDef: ColumnDef<Product>[] = [
         },
     },
     {
+        accessorKey: "reduction",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Reduction" />
+          ),
+        cell: ({ row }) => {
+            const amount = row.original.reduction!.toFixed(2)
+            return <p className="flex justify-between text-right font-medium"> {amount}%</p>
+        },
+    },
+    {
         accessorKey: "isAvailable",
         header: "Available",
         cell: ({ row }) => {
