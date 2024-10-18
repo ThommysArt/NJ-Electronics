@@ -5,6 +5,9 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Order } from "@prisma/client"
 import { DataTableColumnHeader } from "@/components/ui/data-table-column-header"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { DotsVerticalIcon } from "@radix-ui/react-icons"
+import { useRouter } from "next/navigation"
 
 export const OrderColumnDef: ColumnDef<Order>[] = [
     {
@@ -60,4 +63,15 @@ export const OrderColumnDef: ColumnDef<Order>[] = [
             return new Date(row.original.createdAt).toLocaleDateString()
         },
     },
+    {
+        header: "More",
+        cell: ({ row }) => {
+            const router = useRouter()
+            return (
+                <Button variant="ghost" size="icon" onClick={()=>router.push(`/admin/orders/{row.originl.orderId}`)}>
+                    <DotsVerticalIcon />
+                </Button>
+            )
+        }
+    }
 ]

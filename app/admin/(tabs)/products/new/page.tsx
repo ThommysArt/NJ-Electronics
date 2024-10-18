@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { NewProductForm } from './_components/new-product-form'
-import { getAllCategories } from '@/actions/categories'
+import { getAllCategories } from '@/utils/data/categories'
 
 const NewProductPage = async () => {
     const categories = await getAllCategories()

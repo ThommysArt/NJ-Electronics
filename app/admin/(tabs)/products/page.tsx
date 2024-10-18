@@ -2,7 +2,7 @@ import React from 'react'
 import { DataTable } from "@/components/ui/data-table"
 import { ColumnFilter } from '@tanstack/react-table'
 import { ProductColumnDef } from '@/app/admin/_components/product-column-def'
-import { getAllProducts } from '@/actions/products'
+import { getAllProducts } from '@/utils/data/products'
 
 const ProductsPage = async  () => {
   const ProductsData = await getAllProducts()
