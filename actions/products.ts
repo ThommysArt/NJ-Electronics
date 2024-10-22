@@ -48,3 +48,15 @@ export async function updateProduct (productId: string, values: z.infer<typeof P
     return { success: false, error: "Failed to update product" };
   }
 }
+
+export async function deleteProduct(productId: string) {
+  try {
+    await prisma.product.delete({
+      where: { productId }
+    })
+    return { success: true }
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    return { success: false, error: "Failed to delete product" };
+  }
+}

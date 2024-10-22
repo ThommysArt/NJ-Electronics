@@ -1,4 +1,4 @@
-"server-only"
+"server only"
 
 import { prisma } from "@/prisma/connection"
 

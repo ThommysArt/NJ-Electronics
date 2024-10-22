@@ -9,3 +9,15 @@ export const createCategory = async (values: z.infer<typeof CategorySchema>) => 
         data: values
     })
 }
+
+export async function deleteCategory(categoryId: string) {
+    try {
+        await prisma.category.delete({
+            where: { categoryId }
+        })
+        return { success: true }
+    } catch (error) {
+        console.error("Error deleting category:", error);
+        return { success: false, error: "Failed to delete category" };
+    }
+}

@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { DataTable } from "@/components/ui/data-table"
 import { ColumnFilter } from '@tanstack/react-table'
 import { CategoryColumnDef } from '../../_components/categories-column-def'
-import { getAllCategories } from '@/actions/categories'
+import { getAllCategories } from '@/utils/data/categories'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'

@@ -27,6 +27,7 @@ model User {
   Authenticator Authenticator[]
 
   orders Order[]
+  chats Chat[]
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -151,4 +152,28 @@ model Order {
 
   cartId String
   cart Cart @relation(references: [cartId], fields: [cartId])
+}
+
+model Chat {
+  chatId String @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages Messages[]
+
+  userId String
+  user User @relation(references: [id], fields: [userId])
+}
+
+model Messages {
+  messageId String @id @default(uuid())
+  text String
+  files String[]
+  createdAt DateTime @default(now())
+  isRead Boolean @default(false)
+  isFromClient Boolean @default(true)
+  
+
+  chatId String
+  chat Chat @relation(references: [chatId], fields: [chatId])
 }
