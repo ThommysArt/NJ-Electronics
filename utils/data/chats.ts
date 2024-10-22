@@ -1,32 +1,17 @@
 "server only"
 
-import { currentUser } from '@/lib/auth'
 import { prisma } from '@/prisma/connection'
 
-export async function getChats() {
-  const chats = await prisma.chat.findMany({
+
+export async function getChats () {
+  return await prisma.chat.findMany({
     include: {
       user: true,
-      messages: {
-        orderBy: {
-          createdAt: 'desc'
-        },
-        take: 1
-      }
     },
     orderBy: {
       updatedAt: 'desc'
     }
   })
-
-  return chats.map(chat => ({
-    chatId: chat.chatId,
-    userId: chat.userId,
-    userName: chat.user.name || 'Unknown User',
-    lastMessage: chat.messages[0]?.text || '',
-    lastMessageTime: chat.messages[0]?.createdAt.toISOString() || '',
-    unreadCount: chat.messages.filter(m => !m.isRead && m.isFromClient).length
-  }))
 }
 
 export async function getChat(chatId: string) {
@@ -59,27 +44,3 @@ export async function getMessages(chatId: string) {
   }))
 }
 
-
-export async function getCurrentUserChat() {
-  const user = await currentUser()
-  if (!user) {
-    throw new Error('User not authenticated')
-  }
-
-  const userId = user.id!
-
-  let chat = await prisma.chat.findFirst({
-    where: { userId },
-  })
-
-  if (!chat) {
-    chat = await prisma.chat.create({
-      data: { userId },
-    })
-  }
-
-  return {
-    chatId: chat.chatId,
-    userId: chat.userId,
-  }
-}

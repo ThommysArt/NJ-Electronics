@@ -1,13 +1,7 @@
-import { ChatList } from './_components/chat-list'
-import { getChats } from '@/utils/data/chats'
+import { getChats } from "@/utils/data/chats";
+import { redirect } from "next/navigation";
 
-export default async function MessagesPage() {
-  const chats = await getChats()
-
-  return (
-    <div className="container mx-auto py-6">
-      <h1 className="text-2xl font-bold mb-4">Messages</h1>
-      <ChatList initialChats={chats} />
-    </div>
-  )
+export default async function MessagesPage () {
+    const chats = await getChats()
+    redirect(`/admin/messages/${chats[0]?.chatId}`)
 }

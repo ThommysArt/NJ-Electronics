@@ -19,7 +19,7 @@ const UnauthorizedPage = () => {
             <CardFooter className="flex flex-row md:justify-end gap-2">
                 <Button variant="outline" onClick={()=> router.back()}><ArrowLeftIcon className="mr-2" /> Go Back</Button>
                 <Button onClick={()=>router.push("/auth/sign-out")}><PersonIcon className="mr-2"/>Sign Out</Button>
-                <Button><Link className="flex" href="/">Go Home <HomeIcon className="ml-2"/></Link></Button>
+                <Button onClick={()=>router.push("/")}>Go Home <HomeIcon className="ml-2"/></Button>
             </CardFooter>
         </Card>
     </div>

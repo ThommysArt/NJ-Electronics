@@ -8,7 +8,7 @@ export default function TopBar() {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold">NJ Electronics</Link>
         <nav>
-          <Link href="/home/messages">
+          <Link href="/home/message">
             <Button variant="ghost" size="sm">
               <MessageCircle className="mr-2 h-4 w-4" />
               Message Us

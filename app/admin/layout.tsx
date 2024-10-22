@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "./_components/navbar";
+import { RoleGate } from "@/components/role-gate";
+import { UserRole } from "@prisma/client";
 
 
 export const metadata: Metadata = {
@@ -12,11 +14,13 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex min-h-screen min-w-screen">
-        <div className="w-screen h-screen sm:pl-16">
-        {children}
-        </div>
-        <Navbar />
-    </div>
+    // <RoleGate allowedRoles={[UserRole.ADMIN]}>
+      <div className="flex min-h-screen min-w-screen">
+          <div className="w-screen h-screen sm:pl-16">
+          {children}
+          </div>
+          <Navbar />
+      </div>
+    // </RoleGate>
   );
 }
