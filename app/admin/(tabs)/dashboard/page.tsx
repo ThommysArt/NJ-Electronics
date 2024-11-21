@@ -10,12 +10,12 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import OrdersCard from "@/app/admin/_components/orders-card";
-import { generateOrdersData } from "@/app/admin/_components/fake-data";
 import Link from "next/link";
+import { getAllOrders } from "@/utils/data/orders";
 
-const page = () => {
+const page = async () => {
   // Get orders from the API
-  const orders = generateOrdersData(2000);
+  const orders = await getAllOrders()
 
   //Function to get the fisrt and last days of the year
   const getYearRange = (date: Date) => {

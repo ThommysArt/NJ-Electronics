@@ -2,10 +2,10 @@ import React from "react";
 import { groupOrdersByDate } from "@/app/admin/(tabs)/analytics/_components/group-orders";
 import AnalyticsChart from "@/app/admin/(tabs)/analytics/_components/orders-chart";
 import { OrdersChartData } from "@/app/admin/(tabs)/analytics/_components/orders-chart";
-import { generateOrdersData } from "@/app/admin/_components/fake-data";
+import { getAllOrders } from "@/utils/data/orders";
 
-const AnalyticsPage = () => {
-  const orders = generateOrdersData(2000)
+const AnalyticsPage = async () => {
+  const orders = await getAllOrders()
   const paidOrders = orders.filter(order=>order.isPaid===true)
   const chartData: OrdersChartData[] = groupOrdersByDate(paidOrders);
   
