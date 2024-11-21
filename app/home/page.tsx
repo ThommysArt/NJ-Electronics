@@ -1,7 +1,5 @@
-import { Suspense } from 'react'
 import Link from 'next/link'
-import { getProductsAndCategories } from '@/actions/products'
-import { SearchBar } from './_components/search-bar'
+import { getProductsAndCategories } from '@/utils/data/products'
 import { ProductCard } from './_components/product-card'
 import { Button } from "@/components/ui/button"
 
@@ -10,13 +8,6 @@ export default async function HomePage({ searchParams }: { searchParams: { categ
 
   return (
     <div className="container mx-auto py-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">NJ Electronics</h1>
-        <Suspense fallback={<div>Loading...</div>}>
-          <SearchBar products={products} categories={categories} />
-        </Suspense>
-      </div>
-
       <div className="flex space-x-2 mb-6 overflow-x-auto pb-2">
         <Button
           variant={!searchParams.category ? "default" : "outline"}

@@ -61,16 +61,3 @@ export async function deleteProduct(productId: string) {
   }
 }
 
-export async function getProductsAndCategories(category?: string) {
-  const products = await prisma.product.findMany({
-    where: category ? { category: { name: category } } : {},
-    include: { category: true },
-  })
-
-  const categories = await prisma.category.findMany()
-
-  return {
-    products: products,
-    categories: categories,
-  }
-}

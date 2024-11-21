@@ -26,6 +26,7 @@ model User {
   // Optional for WebAuthn support
   Authenticator Authenticator[]
 
+  carts Cart[]
   orders Order[]
   chats Chat[]
  
@@ -121,6 +122,7 @@ model Cart {
 
   order Order[]
   cartItems CartItem[]
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model CartItem {
