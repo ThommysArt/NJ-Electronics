@@ -25,7 +25,6 @@ export const Navbar = () => {
     { name: "Categories", link: "/admin/categories", icon: LayersIcon },
     { name: "Orders", link: "/admin/orders", icon: ArchiveIcon },
     { name: "Customers", link: "/admin/customers", icon: PersonIcon },
-    { name: "Messages", link: "/admin/messages", icon: EnvelopeClosedIcon },
     { name: "Analytics", link: "/admin/analytics", icon: BarChartIcon },
   ]
   return (
