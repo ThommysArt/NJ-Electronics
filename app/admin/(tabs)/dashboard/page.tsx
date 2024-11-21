@@ -205,7 +205,9 @@ const page = async () => {
           </CardFooter>
         </Card>
       </div>
-      <OrdersCard orders={orders} />
+      {orders.length > 0 && (
+        <OrdersCard orders={orders} />
+      )}
     </main>
   );
 };
