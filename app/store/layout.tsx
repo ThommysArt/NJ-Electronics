@@ -17,12 +17,12 @@ const HomeLayout = async ({children}: {children: React.ReactNode}) => {
                 <Suspense fallback={<div>Loading...</div>}>
                     <SearchBar products={products} categories={categories} />
                 </Suspense>
-                <Link href="/home/cart">
+                <Link href="/store/cart">
                     <Button variant="outline" size="icon">
                     <ShoppingCartIcon className="w-5 h-5" />
                     </Button>
                 </Link>
-                <Link href="/home/orders">
+                <Link href="/store/orders">
                     <Button variant="outline" size="icon">
                     <CountdownTimerIcon className="w-5 h-5" />
                     </Button>

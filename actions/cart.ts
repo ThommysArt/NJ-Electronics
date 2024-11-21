@@ -52,8 +52,8 @@ export async function addToCart(formData: FormData) {
         },
       })
   }
-  revalidatePath('/home/cart')
-  redirect('/home/cart')
+  revalidatePath('/store/cart')
+  redirect('/store/cart')
 }
 
 export async function updateCartItemQuantity(cartItemId: string, units: number) {
@@ -62,7 +62,7 @@ export async function updateCartItemQuantity(cartItemId: string, units: number) 
     data: { units },
   })
 
-  revalidatePath('/home/cart')
+  revalidatePath('/store/cart')
 }
 
 export async function removeCartItem(cartItemId: string) {
@@ -70,7 +70,7 @@ export async function removeCartItem(cartItemId: string) {
     where: { cartItemId },
   })
 
-  revalidatePath('/home/cart')
+  revalidatePath('/store/cart')
 }
 
 export async function checkout(cartId: string, phoneNumber: string) {
@@ -100,6 +100,6 @@ export async function checkout(cartId: string, phoneNumber: string) {
     data: { isOrdered: true },
   })
 
-  revalidatePath('/home/cart')
-  redirect('/home/order-confirmation')
+  revalidatePath('/store/cart')
+  redirect('/store/order-confirmation')
 }

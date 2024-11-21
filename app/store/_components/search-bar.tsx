@@ -39,7 +39,7 @@ export function SearchBar({ products, categories }: SearchBarProps) {
 
   const handleSelectCategory = (result: Category) => {
     setOpen(false)
-    router.push(`/home?category=${result.name}`)
+    router.push(`/store?category=${result.name}`)
   }
 
   return (

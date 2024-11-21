@@ -13,7 +13,7 @@ export default async function HomePage({ searchParams }: { searchParams: { categ
           variant={!searchParams.category ? "default" : "outline"}
           asChild
         >
-          <Link href="/home">All</Link>
+          <Link href="/store">All</Link>
         </Button>
         {categories.map((category) => (
           <Button
@@ -21,7 +21,7 @@ export default async function HomePage({ searchParams }: { searchParams: { categ
             variant={searchParams.category === category.name ? "default" : "outline"}
             asChild
           >
-            <Link href={`/home?category=${category.name}`}>{category.name}</Link>
+            <Link href={`/store?category=${category.name}`}>{category.name}</Link>
           </Button>
         ))}
       </div>

@@ -15,7 +15,7 @@ export function ProductCard({ product }: {product: Product & { category: Categor
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Link href={`/home/products/${product.productId}`}>
+      <Link href={`/store/products/${product.productId}`}>
         <Card className="overflow-hidden">
           <CardContent className="p-0">
             <div className="aspect-square relative">

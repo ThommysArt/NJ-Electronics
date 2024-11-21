@@ -42,7 +42,7 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
             </CardContent>
             <CardFooter>
               <Button asChild>
-                <Link href={`/home/orders/${order.orderId}`}>View Order Details</Link>
+                <Link href={`/store/orders/${order.orderId}`}>View Order Details</Link>
               </Button>
             </CardFooter>
           </Card>

@@ -96,7 +96,7 @@ export default function CartContents({ cart }: CartContentsProps) {
             </CardContent>
             <CardFooter className="flex justify-between p-4">
               <Button variant="outline" asChild>
-                <Link href="/home">Continue Shopping</Link>
+                <Link href="/store">Continue Shopping</Link>
               </Button>
               <PurchaseDialog cartId={cart.cartId} />
             </CardFooter>
