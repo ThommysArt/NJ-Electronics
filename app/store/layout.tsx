@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { SearchBar } from './_components/search-bar'
 import { getProductsAndCategories } from '@/utils/data/products'
 import { CountdownTimerIcon } from '@radix-ui/react-icons'
+import { ThemeSwitcher } from '@/components/theme-switcher'
 
 const HomeLayout = async ({children}: {children: React.ReactNode}) => {
     const { products, categories } = await getProductsAndCategories()
@@ -30,6 +31,12 @@ const HomeLayout = async ({children}: {children: React.ReactNode}) => {
             </div>
         </div>
         {children}
+        <div className="w-full h-14 p-2 flex items-center justify-between gap-3">
+            <p className="text-center text-sm truncate">
+                &copy; 2024 NJ Electronics. All rights reserved.
+            </p>
+            <ThemeSwitcher />
+        </div>
     </div>
   )
 }

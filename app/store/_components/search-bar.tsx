@@ -34,7 +34,7 @@ export function SearchBar({ products, categories }: SearchBarProps) {
 
   const handleSelectProduct = (result: Product) => {
     setOpen(false)
-    router.push(`/product/${result.productId}`)
+    router.push(`/store/products/${result.productId}`)
     }
 
   const handleSelectCategory = (result: Category) => {
