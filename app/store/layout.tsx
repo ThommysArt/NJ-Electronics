@@ -31,11 +31,11 @@ const HomeLayout = async ({children}: {children: React.ReactNode}) => {
             </div>
         </div>
         {children}
-        <div className="w-full h-14 p-2 flex items-center justify-between gap-3">
+        <div className="w-full h-14 p-2 flex items-center justify-between gap-3 border-t">
             <p className="text-center text-sm truncate">
-                &copy; 2024 NJ Electronics. All rights reserved.
+                &copy;Copyright 2024 NJ Electronics.
             </p>
-            <ThemeSwitcher />
+            <ThemeSwitcher mode='expanded'/>
         </div>
     </div>
   )
