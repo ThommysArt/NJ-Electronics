@@ -31,7 +31,7 @@ const OrderViewPage = async ({params}: {params: {orderId: string}}) => {
     }
     return (
         <div>
-            <Card className="overflow-hidden m-4 max-w-md">
+            <Card className="overflow-hidden m-4 max-w-md pb-10">
                 <CardHeader className="bg-muted/50">
                         <CardTitle className="text-lg font-bold">
                             Order {params.orderId}

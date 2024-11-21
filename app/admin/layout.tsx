@@ -15,8 +15,8 @@ export default function AdminLayout({
 }>) {
   return (
     // <RoleGate allowedRoles={[UserRole.ADMIN]}>
-      <div className="flex min-h-screen min-w-screen">
-          <div className="w-screen h-screen sm:pl-16">
+      <div className="flex flex-col md:flex-row min-h-screen min-w-screen">
+          <div className="w-screen h-screen pb-24 sm:pl-16 md:pb-0">
           {children}
           </div>
           <Navbar />

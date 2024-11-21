@@ -80,7 +80,7 @@ export const OrderUpdatePage = ({my_order}: {my_order: MyOrderInterface}) => {
     return (
         <div>
             <form onSubmit={handleUpdate}>
-                <Card className="overflow-hidden max-w-md m-4" >
+                <Card className="overflow-hidden max-w-md m-4 pb-10" >
                     <CardHeader className="bg-muted/50">
                             <CardTitle className="text-lg font-bold">
                                 Order {my_order.orderId}
