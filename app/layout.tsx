@@ -19,9 +19,21 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NJ Electronics",
-  description: "Need some tech? We got you!",
-};
+  title: {
+    default: 'NJ Electronics',
+    template: '%s | NJ Electronics',
+  },
+  description: 'Your one-stop shop for all electronics needs',
+  keywords: ['electronics', 'gadgets', 'technology', 'online store'],
+  authors: [{ name: 'NJ Electronics Team' }],
+  creator: 'NJ Electronics',
+  publisher: 'NJ Electronics',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+}
 
 export default function RootLayout({
   children,
