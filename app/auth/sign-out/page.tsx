@@ -2,9 +2,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { LockClosedIcon, PersonIcon } from "@radix-ui/react-icons";
-import { SignOutAction } from "@/actions/logout";
+import { SignOutAction } from "@/actions/auth";
 
-  
+
 export default function SignUpPage() {
   return (
     <Card>
