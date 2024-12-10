@@ -15,6 +15,7 @@ type ProductDetailsProps = {
     name: string
     description: string
     price: number
+    reduction: number | null
     images: string[]
     category: { name: string }
   }
@@ -57,7 +58,14 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <p className="text-3xl font-semibold">${product.price.toFixed(2)}</p>
+            {product.reduction && product.reduction > 0 ? (
+              <div className="flex items-center gap-2">
+                <span className="text-3xl font-semibold">XAF {(product.price - (product.price * product.reduction / 100)).toFixed(2)}</span>
+                <Badge variant="success">save {product.reduction}%</Badge>
+              </div>
+            ):(
+              <span className="text-3xl font-semibold">XAF {product.price.toFixed(2)}</span>
+            )}
             <Badge variant="secondary">{product.category.name}</Badge>
           </motion.div>
           <Separator />
@@ -74,12 +82,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            <form action={addToCart}>
-              <input type="hidden" name="productId" value={product.productId} />
-              <Button type="submit">
-                Add to Cart
-              </Button>
-            </form>
+            <Button onClick={() => addToCart(product.productId)}>
+              Add to Cart
+            </Button>
           </motion.div>
         </div>
       </div>

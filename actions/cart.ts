@@ -5,13 +5,13 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { auth } from '@/auth'
 
-export async function addToCart(formData: FormData) {
+export async function addToCart(productId: string) {
   const session = await auth()
   if (!session || !session.user) {
-    throw new Error('You must be logged in to add items to your cart')
+    const callbackUrl = encodeURIComponent(`/store/products/${productId}`)
+    redirect(`/auth/sign-in?callbackUrl=${callbackUrl}`)
+    return
   }
-
-  const productId = formData.get('productId') as string
   const userId = session.user.id
 
   let cart = await prisma.cart.findFirst({

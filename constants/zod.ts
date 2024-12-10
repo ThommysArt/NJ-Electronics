@@ -6,6 +6,14 @@ export const webAuthnSchema = z.object({
       .email("Invalid email"),
 })
 
+export const EmailSignInSchema = z.object({
+  email: z.string({required_error: "You must have an email"})
+    .email("Invalid email address"),
+  password: z.string({required_error: "You must use a password"})
+    .min(8, "Minimum 8 characters required!"),
+  code: z.optional(z.string()),
+})
+
 export const CategorySchema = z.object({
   name: z.string().min(2, {
     message: "Category name must be at least 2 characters.",

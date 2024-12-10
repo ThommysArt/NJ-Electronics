@@ -5,7 +5,10 @@
  */
 export const publicRoutes = [
     "/api/uploadthing",
-    "/"
+    "/",
+    "/store",
+    "/store/products",
+    "/store/products/:path*",
   ];
   
   /**

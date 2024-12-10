@@ -1,18 +1,14 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { LockClosedIcon, PersonIcon } from "@radix-ui/react-icons";
-import { signOut } from "@/auth";
+import { SignOutAction } from "@/actions/logout";
 
-
+  
 export default function SignUpPage() {
   return (
     <Card>
-      <form
-        action={async (formData) => {
-          "use server"
-          await signOut()
-        }}
-      >
+      <form>
         <CardHeader>
           <CardTitle className="flex text-center justify-center items-center text-2xl font-bold space-x-3">
             <LockClosedIcon className="h-6 w-6 mr-3"/>
@@ -22,7 +18,7 @@ export default function SignUpPage() {
         </CardHeader>
         <CardFooter className="flex gap-4">
           <Button variant="outline">Cancel</Button>
-          <Button type="submit" variant="destructive">Sign Out</Button>
+          <Button type="submit" variant="destructive" onClick={SignOutAction}>Sign Out</Button>
         </CardFooter>
       </form>
     </Card>
