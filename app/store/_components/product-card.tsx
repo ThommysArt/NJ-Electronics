@@ -9,9 +9,23 @@ import { Category, Product } from '@prisma/client'
 import { Button } from '@/components/ui/button'
 import { addToCart } from '@/actions/cart'
 import { ShoppingCart } from 'lucide-react'
+import { useCurrentUser } from '@/hooks/use-current-user'
+import { useRouter } from 'next/navigation'
 
 
 export function ProductCard({ product }: {product: Product & { category: Category }}) {
+  const user = useCurrentUser()
+  const router = useRouter()
+  const callbackUrl = encodeURIComponent(`/store/products/${product.productId}`)
+
+  const AddItemToCart = () => {
+    if (!user) {
+      router.push(`/auth/signin?callbackUrl=${callbackUrl}`)
+      return
+    }
+    addToCart(product.productId)
+    router.push('/store/cart')
+  }
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -42,7 +56,7 @@ export function ProductCard({ product }: {product: Product & { category: Categor
             )}
             <div className="flex items-center justify-between w-full gap-2">
               <Badge variant="secondary">{product.category.name}</Badge>
-              <Button size="icon" onClick={()=>addToCart(product.productId)}>
+              <Button size="icon" onClick={AddItemToCart} className='z-20'>
                 <ShoppingCart className="h-4 w-4" />
               </Button>
             </div>

@@ -19,10 +19,16 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { DotsVerticalIcon, TrashIcon } from "@radix-ui/react-icons"
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle,
+} from "@/components/ui/alert"
+import { DotsVerticalIcon, TrashIcon, ExclamationTriangleIcon, RocketIcon } from "@radix-ui/react-icons"
 import { useRouter } from "next/navigation"
 import { toast } from "@/components/ui/use-toast"
 import { deleteProduct } from "@/actions/products"
+import { BeatLoader } from "react-spinners"
 
 
 export const ProductColumnDef: ColumnDef<Product>[] = [
@@ -89,21 +95,29 @@ export const ProductColumnDef: ColumnDef<Product>[] = [
         header: "Delete",
         cell: ({ row }) => {
             const router = useRouter()
+            const [error, setError] = React.useState<string | undefined>("");
+            const [success, setSuccess] = React.useState<string | undefined>("");
+            const [loading, setLoading] = React.useState<boolean>(false)
 
             const deleteThisProduct = async () => {
                 const productId = row.original.productId
+                setLoading(true)
                 try {
                     await deleteProduct(productId)
+                    setSuccess("Product deleted successfully")
                     router.refresh()
                 } catch {
+                    setError("Failed to delete this product")
                     toast({
                         title: "Deletion failed",
                         description: "Failed to delete this product. Please try again!",
                         variant: "destructive"
                     })
+                } finally {
+                    setLoading(false)
                 }
-                
             }
+
             return (
                 <Dialog>
                     <DialogTrigger asChild>
@@ -117,9 +131,25 @@ export const ProductColumnDef: ColumnDef<Product>[] = [
                                 product and remove it from the server.
                             </DialogDescription>
                         </DialogHeader>
+                        {error && (
+                            <Alert variant="destructive">
+                                <ExclamationTriangleIcon className="h-6 w-6" />
+                                <AlertTitle>Error</AlertTitle>
+                                <AlertDescription>{error}</AlertDescription>
+                            </Alert>
+                        )}
+                        {success && (
+                            <Alert>
+                                <RocketIcon className="h-6 w-6"/>
+                                <AlertTitle>Success</AlertTitle>
+                                <AlertDescription>{success}</AlertDescription>
+                            </Alert>
+                        )}
                         <DialogFooter>
                             <DialogClose><Button variant="outline">Cancel</Button></DialogClose>
-                            <Button variant="destructive" onClick={deleteThisProduct}>Continue</Button>
+                            <Button variant="destructive" onClick={deleteThisProduct} disabled={loading}>
+                                {loading ? <BeatLoader /> : "Delete"}
+                            </Button>
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>

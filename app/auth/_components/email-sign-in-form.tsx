@@ -27,7 +27,6 @@ import { EmailLogin, SignUpAction } from "@/actions/auth";
 import { BeatLoader } from "react-spinners";
 
 export const EmailSignInForm = ({mode}: {mode: "sign-in" | "sign-up"}) => {
-    const [showTwoFactor, setShowTwoFactor] = useState(false);
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
     const [isPending, startTransition] = useTransition();
@@ -102,8 +101,8 @@ export const EmailSignInForm = ({mode}: {mode: "sign-in" | "sign-up"}) => {
                     <FormMessage />
                     </FormItem>
                 )}
-                />
-                <FormField
+            />
+            <FormField
                 control={form.control}
                 name="password"
                 render={({ field }) => (
@@ -115,20 +114,20 @@ export const EmailSignInForm = ({mode}: {mode: "sign-in" | "sign-up"}) => {
                     <FormMessage />
                     </FormItem>
                 )}
-                />
-                {error && (
-            <Alert variant="destructive">
-                <ExclamationTriangleIcon className="h-6 w-6" />
-                <AlertTitle>Error</AlertTitle>
-                <AlertDescription>{error}</AlertDescription>
-            </Alert>
+            />
+            {error && (
+                <Alert variant="destructive">
+                    <ExclamationTriangleIcon className="h-6 w-6" />
+                    <AlertTitle>Error</AlertTitle>
+                    <AlertDescription>{error}</AlertDescription>
+                </Alert>
             )}
             {success && (
-            <Alert>
-                <RocketIcon className="h-6 w-6"/>
-                <AlertTitle>Success</AlertTitle>
-                <AlertDescription>{success}</AlertDescription>
-            </Alert>
+                <Alert>
+                    <RocketIcon className="h-6 w-6"/>
+                    <AlertTitle>Success</AlertTitle>
+                    <AlertDescription>{success}</AlertDescription>
+                </Alert>
             )}
 
             <Button type="submit" className="w-full" disabled={isPending}>
