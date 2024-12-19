@@ -33,7 +33,7 @@ export default function OrderDetails({ order }: { order: MyOrderInterface }) {
           <p className="text-muted-foreground mb-2">
             Placed on: {new Date(order.createdAt).toLocaleString()}
           </p>
-          <p className="font-semibold mb-2">Total: ${order.amount.toFixed(2)}</p>
+          <p className="font-semibold mb-2">Total: XAF {order.amount.toFixed(2)}</p>
           <Badge variant={order.isDelivered ? "success" : "secondary"}>
             {order.isDelivered ? "Delivered" : "Pending Delivery"}
           </Badge>

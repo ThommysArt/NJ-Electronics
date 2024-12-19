@@ -26,7 +26,7 @@ export async function addToCart(productId: string) {
 
   const product = await prisma.product.findUnique({
     where: { productId },
-    select: { price: true },
+    select: { price: true, reduction: true },
   })
 
   if (!product) {
@@ -48,7 +48,7 @@ export async function addToCart(productId: string) {
           cartId: cart.cartId,
           productId,
           units: 1,
-          price: product.price,
+          price: product.reduction ? product.price - (product.price * product.reduction / 100) : product.price,
         },
       })
   }
@@ -101,5 +101,5 @@ export async function checkout(cartId: string, phoneNumber: string, name: string
   })
 
   revalidatePath('/store/cart')
-  redirect('/store/order-confirmation')
+  redirect('/store')
 }

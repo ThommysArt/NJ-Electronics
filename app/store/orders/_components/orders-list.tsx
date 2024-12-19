@@ -35,7 +35,7 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
               <p className="text-muted-foreground mb-2">
                 Placed on: {new Date(order.createdAt).toLocaleDateString()}
               </p>
-              <p className="font-semibold">Total: ${order.amount.toFixed(2)}</p>
+              <p className="font-semibold">Total: XAF {order.amount.toFixed(2)}</p>
               <Badge variant={order.isDelivered ? "success" : "secondary"} className="mt-2">
                 {order.isDelivered ? "Delivered" : "Pending Delivery"}
               </Badge>
