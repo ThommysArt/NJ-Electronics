@@ -17,6 +17,7 @@ import * as z from "zod"
 import { Spinner } from '@/components/icons/spinner'
 
 const formSchema = z.object({
+  name: z.string().min(1, {message: "You must Give a Name for purchase records"}),
   phoneNumber: z.string().min(10, {
     message: "Phone number must be at least 10 characters.",
   }),
@@ -37,7 +38,7 @@ export const PurchaseDialog = ({cartId}: {cartId: string}) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true)
     try {
-      await checkout(cartId, values.phoneNumber)
+      await checkout(cartId, values.phoneNumber, values.name)
       setSuccess("Order placed successfully")
     } catch (error) {
       setError("Failed to place order")
@@ -60,6 +61,19 @@ export const PurchaseDialog = ({cartId}: {cartId: string}) => {
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your phone number" {...field} disabled={loading} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="phoneNumber"

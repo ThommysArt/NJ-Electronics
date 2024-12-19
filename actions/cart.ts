@@ -73,7 +73,7 @@ export async function removeCartItem(cartItemId: string) {
   revalidatePath('/store/cart')
 }
 
-export async function checkout(cartId: string, phoneNumber: string) {
+export async function checkout(cartId: string, phoneNumber: string, name: string) {
   const cart = await prisma.cart.findUnique({
     where: { cartId },
     include: { cartItems: true, user: true },
@@ -90,8 +90,8 @@ export async function checkout(cartId: string, phoneNumber: string) {
       cartId,
       userId: cart.userId,
       amount,
-      paymentName: cart.user.name!, // You might want to get this from the form
-      paymentPhone: phoneNumber, // You might want to get this from the form
+      paymentName: name,
+      paymentPhone: phoneNumber,
     },
   })
 
