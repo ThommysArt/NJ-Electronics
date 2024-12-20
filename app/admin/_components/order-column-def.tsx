@@ -11,12 +11,12 @@ import { useRouter } from "next/navigation"
 
 export const OrderColumnDef: ColumnDef<Order>[] = [
     {
-        accessorKey: "orderId",
+        accessorKey: "paymentName",
         header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Order ID" />
+            <DataTableColumnHeader column={column} title="Payment Name" />
         ),
         cell: ({ row }) => {
-            return <span className="font-medium">{row.original.orderId.slice(0, 8)}</span>
+            return <span className="font-medium">{row.original.paymentName}</span>
         }
     },
     {
@@ -67,8 +67,9 @@ export const OrderColumnDef: ColumnDef<Order>[] = [
         header: "More",
         cell: ({ row }) => {
             const router = useRouter()
+
             return (
-                <Button variant="ghost" size="icon" onClick={()=>router.push(`/admin/orders/{row.originl.orderId}`)}>
+                <Button size="icon" onClick={()=>router.push(`/admin/orders/${row.original.orderId}`)}>
                     <DotsVerticalIcon />
                 </Button>
             )

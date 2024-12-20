@@ -80,18 +80,18 @@ const OrderViewPage = async ({params}: {params: {orderId: string}}) => {
                             <h3 className="text-md font-semibold mb-4">Products</h3>
                             <Table>
                                 <TableBody>
-                                    <TableHeader>
-                                        <TableRow>
+                                    <TableHeader className='w-full'>
+                                        <TableRow className="w-full">
                                             <TableHead>Product</TableHead>
                                             <TableHead>Units</TableHead>
                                             <TableHead>Price</TableHead>
                                         </TableRow>
                                     </TableHeader>
-                                    {my_order.cart.cartItems.map(cartItem=>(
-                                        <TableRow>
+                                    {my_order.cart.cartItems.map((cartItem, idx)=>(
+                                        <TableRow key={idx}>
                                             <TableCell className="text-sm font-normal">{cartItem.product.name}</TableCell>
                                             <TableCell className="text-sm font-normal text-muted-foreground">{cartItem.units}</TableCell>
-                                            <TableCell className="text-sm font-normal text-muted-foreground">{cartItem.price}</TableCell>
+                                            <TableCell className="text-sm font-normal text-muted-foreground">XAF {cartItem.price}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>

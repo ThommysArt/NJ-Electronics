@@ -6,7 +6,7 @@ import { getAllOrders } from '@/utils/data/orders'
 
 const OrdersPage = async () => {
   const OrdersData = await getAllOrders()
-  const customFilter: ColumnFilter = { id:"orderId", value:"Order ID" }
+  const customFilter: ColumnFilter = { id:"paymentName", value:"Payment Name" }
   return (
     <main className="flex overflow-x-auto max-w-[100vw] pb-20 sm:pb-5">
       <div className="min-w-full">
