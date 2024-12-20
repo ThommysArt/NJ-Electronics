@@ -30,7 +30,7 @@ const OrderViewPage = async ({params}: {params: {orderId: string}}) => {
         return notFound()
     }
     return (
-        <div>
+        <div className="my-4">
             <Card className="overflow-hidden m-4 max-w-md pb-10">
                 <CardHeader className="bg-muted/50">
                         <CardTitle className="text-lg font-bold">

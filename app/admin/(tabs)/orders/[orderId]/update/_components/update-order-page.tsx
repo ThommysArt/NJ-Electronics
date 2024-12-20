@@ -36,14 +36,9 @@ interface MyOrderInterface extends Order {
 
 export const OrderUpdatePage = ({my_order}: {my_order: MyOrderInterface}) => {
     const [ loading, setLoading ] = useState(false)
-    const [ paymentStatus, setPaymentStatus ] = useState<boolean>(false)
-    const [ deliveryStatus, setDeliveryStatus ] = useState<boolean>(false)
+    const [ paymentStatus, setPaymentStatus ] = useState<boolean>(my_order.isPaid)
+    const [ deliveryStatus, setDeliveryStatus ] = useState<boolean>(my_order.isDelivered)
     const router = useRouter()
-
-    useEffect(()=>{
-        setPaymentStatus(my_order.isPaid)
-        setDeliveryStatus(my_order.isDelivered)
-    }, [])
 
     const handleUpdate = async () => {
         setLoading(true)
@@ -78,7 +73,7 @@ export const OrderUpdatePage = ({my_order}: {my_order: MyOrderInterface}) => {
     }
 
     return (
-        <div>
+        <div className="my-4">
             <form onSubmit={handleUpdate}>
                 <Card className="overflow-hidden max-w-md m-4 pb-10" >
                     <CardHeader className="bg-muted/50">
