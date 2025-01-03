@@ -52,7 +52,7 @@ export default function Hero() {
           <div className="h-full w-full">
             <AspectRatio ratio={16/9} className="h-full">
               <Image
-                src="/imgs/img4.jpg"
+                src="https://utfs.io/f/EAWqchXM7I0KQhzLqWaBg0Nix3YmCKWTJLhG9EFc7f5Ztuyd"
                 alt="Latest Tech Gadgets"
                 fill
                 className='object-cover'

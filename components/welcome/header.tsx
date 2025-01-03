@@ -19,7 +19,7 @@ export default function Header() {
     >
       <Link href="/" className="flex items-center space-x-2">
         <div className="w-10 h-10">
-          <Image src="/logo.svg" alt="NJ Electronics Logo" width={40} height={40} className="rounded-md border" />
+          <Image src="https://utfs.io/f/EAWqchXM7I0K3fu7R7k8gFedUn4z5ksfKGyjwBXulr73ahWR" alt="NJ Electronics Logo" width={40} height={40} className="rounded-md border" />
         </div>
         <span className="text-2xl font-bold text-primary">NJ Electronics</span>
       </Link>

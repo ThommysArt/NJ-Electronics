@@ -44,7 +44,7 @@ export default function RootLayout({
     <SessionProvider>
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="https://utfs.io/f/EAWqchXM7I0K3fu7R7k8gFedUn4z5ksfKGyjwBXulr73ahWR" />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body

@@ -8,9 +8,9 @@ import { AspectRatio } from '../ui/aspect-ratio'
 import { useRouter } from 'next/navigation'
 
 const products = [
-  { name: 'Latest Smartphone', price: 'XAF 210000', image: '/imgs/img1.jpg' },
-  { name: 'Wireless Earbuds', price: 'XAF 40000', image: '/imgs/img2.jpg' },
-  { name: 'Smart Watch', price: 'XAF 60000', image: '/imgs/img3.jpg' },
+  { name: 'Latest Smartphone', price: 'XAF 210000', image: 'https://utfs.io/f/EAWqchXM7I0K4d1cCBTR1cpQgUuSaXsvtjiOT42GImz8F9fW' },
+  { name: 'Wireless Earbuds', price: 'XAF 40000', image: 'https://utfs.io/f/EAWqchXM7I0KcFJHdebAZQRuvDTKgLpF1MXJqYiBwxO5Ssh6' },
+  { name: 'Smart Watch', price: 'XAF 60000', image: 'https://utfs.io/f/EAWqchXM7I0KcFJHdebAZQRuvDTKgLpF1MXJqYiBwxO5Ssh6' },
 ]
 
 export default function FeaturedProducts() {
